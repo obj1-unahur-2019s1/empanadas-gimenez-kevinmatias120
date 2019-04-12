@@ -6,9 +6,36 @@ object galvan {
 // polimorfismo = propiedad de que distintos objetos entiendan el mensaje
 
 	var sueldo = 15000
+	var deuda = 0
+	var dinero = 0
 	method sueldo() { return sueldo }
 	method sueldo(nuevoValor) { sueldo = nuevoValor }
-	method cobrarSueldo(){}
+	method cobrarSueldo(){
+		if (sueldo >= deuda){
+			dinero = sueldo - deuda
+			deuda = 0
+	    }else {
+	    	deuda = deuda - sueldo
+	    }
+		
+	}
+	method gastarDinero(gasto){
+		if (dinero >= gasto) {
+			dinero = dinero - gasto
+		}else{
+			if (dinero < 0){
+				deuda = gasto - dinero
+				dinero = 0
+			}else{
+				deuda = deuda + gasto
+			}
+		}
+	   
+	    	
+		
+	}
+	method totalDinero(){return dinero}
+	method totalDeuda(){return deuda}
 }
 
 object baigorria {
